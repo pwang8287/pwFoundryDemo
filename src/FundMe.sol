@@ -38,6 +38,7 @@ contract FundMe {
         s_addressToAmountFunded[msg.sender] += msg.value; //将发起交易的账户的地址和金额保存在Mapping中
     }
 
+    // 将需要频繁访问链上的数组存在本地内存数组中读取，可以节省更多汽油费
     function cheaperWithdraw() public onlyOwner {
         uint256 fundersLength = s_funders.length;
         for (
